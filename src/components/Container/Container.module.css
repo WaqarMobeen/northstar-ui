@@ -1,0 +1,10 @@
+.container {
+  width: 100%;
+  max-width: var(--ns-container-width, 1024px);
+  margin-inline: auto;
+  padding-inline: var(--ns-space-6);
+}
+
+.bleed {
+  padding-inline: 0;
+}

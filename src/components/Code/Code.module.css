@@ -1,0 +1,26 @@
+.inline {
+  font-family: var(--ns-font-mono);
+  font-size: 0.875em;
+  padding: 0.1em 0.35em;
+  border-radius: var(--ns-radius-sm);
+  background: var(--ns-color-bg-muted);
+  color: var(--ns-color-fg-default);
+  border: 1px solid var(--ns-color-border-subtle);
+}
+
+.block {
+  font-family: var(--ns-font-mono);
+  font-size: var(--ns-font-size-sm);
+  line-height: var(--ns-line-height-relaxed);
+  margin: 0;
+  padding: var(--ns-space-4);
+  border-radius: var(--ns-radius-md);
+  background: var(--ns-color-bg-subtle);
+  color: var(--ns-color-fg-default);
+  border: 1px solid var(--ns-color-border-subtle);
+  overflow-x: auto;
+}
+
+.block code {
+  font-family: inherit;
+}

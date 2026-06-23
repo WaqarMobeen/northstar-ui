@@ -1,0 +1,17 @@
+.kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.5em;
+  height: 1.5em;
+  padding: 0 0.4em;
+  font-family: var(--ns-font-sans);
+  font-size: var(--ns-font-size-xs);
+  font-weight: var(--ns-font-weight-medium);
+  line-height: 1;
+  color: var(--ns-color-fg-muted);
+  background: var(--ns-color-bg-surface);
+  border: 1px solid var(--ns-color-border-default);
+  border-bottom-width: 2px;
+  border-radius: var(--ns-radius-sm);
+}

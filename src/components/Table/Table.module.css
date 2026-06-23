@@ -1,0 +1,77 @@
+.scroll {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.scroll:focus-visible {
+  outline: var(--ns-focus-ring-width) solid var(--ns-color-focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--ns-radius-sm);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--ns-font-size-sm);
+  color: var(--ns-color-fg-default);
+}
+
+.caption {
+  padding: var(--ns-space-2) var(--ns-space-3);
+  text-align: left;
+  font-size: var(--ns-font-size-xs);
+  color: var(--ns-color-fg-subtle);
+  caption-side: top;
+}
+
+.hiddenCaption {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.head {
+  background: var(--ns-color-bg-subtle);
+}
+
+.headerCell {
+  padding: var(--ns-space-3);
+  font-weight: var(--ns-font-weight-semibold);
+  color: var(--ns-color-fg-muted);
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--ns-color-border-default);
+}
+
+.cell {
+  padding: var(--ns-space-3);
+  border-bottom: 1px solid var(--ns-color-border-subtle);
+  vertical-align: middle;
+}
+
+.table[data-density='compact'] .headerCell,
+.table[data-density='compact'] .cell {
+  padding: var(--ns-space-2) var(--ns-space-3);
+}
+
+.headerCell[data-align='center'],
+.cell[data-align='center'] {
+  text-align: center;
+}
+.headerCell[data-align='end'],
+.cell[data-align='end'] {
+  text-align: right;
+}
+
+.table[data-hoverable] .row:hover .cell {
+  background: var(--ns-color-bg-subtle);
+}
+
+.row:last-child .cell {
+  border-bottom: 0;
+}

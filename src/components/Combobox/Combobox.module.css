@@ -1,0 +1,109 @@
+.root {
+  position: relative;
+  width: 100%;
+}
+
+.control {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--ns-color-bg-surface);
+  border: 1px solid var(--ns-color-border-default);
+  border-radius: var(--ns-radius-md);
+  height: var(--ns-control-height-md);
+  transition:
+    border-color var(--ns-duration-fast) var(--ns-ease-standard),
+    box-shadow var(--ns-duration-fast) var(--ns-ease-standard);
+}
+
+.control:focus-within {
+  border-color: var(--ns-color-accent-solid);
+  box-shadow: 0 0 0 var(--ns-focus-ring-width) var(--ns-color-focus-ring);
+}
+
+.control[data-invalid] {
+  border-color: var(--ns-color-danger-solid);
+}
+
+.control[data-disabled] {
+  background: var(--ns-color-bg-subtle);
+  opacity: 0.7;
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  color: var(--ns-color-fg-default);
+  font-family: var(--ns-font-sans);
+  font-size: var(--ns-font-size-sm);
+  padding-inline: var(--ns-space-3) var(--ns-space-8);
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--ns-color-fg-subtle);
+}
+
+.chevron {
+  position: absolute;
+  right: var(--ns-space-3);
+  display: inline-flex;
+  pointer-events: none;
+  color: var(--ns-color-fg-subtle);
+}
+
+.chevron svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.listbox {
+  position: absolute;
+  z-index: var(--ns-z-popover);
+  top: calc(100% + var(--ns-space-1));
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: var(--ns-space-1);
+  list-style: none;
+  max-height: 16rem;
+  overflow-y: auto;
+  background: var(--ns-color-bg-raised);
+  border: 1px solid var(--ns-color-border-default);
+  border-radius: var(--ns-radius-md);
+  box-shadow: var(--ns-shadow-lg);
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  padding: var(--ns-space-2) var(--ns-space-3);
+  font-size: var(--ns-font-size-sm);
+  color: var(--ns-color-fg-default);
+  border-radius: var(--ns-radius-sm);
+  cursor: pointer;
+}
+
+.option[data-active] {
+  background: var(--ns-color-accent-soft);
+  color: var(--ns-color-accent-fg);
+}
+
+.option[aria-selected='true'] {
+  font-weight: var(--ns-font-weight-medium);
+}
+
+.option[aria-disabled='true'] {
+  color: var(--ns-color-fg-subtle);
+  cursor: not-allowed;
+}
+
+.empty {
+  padding: var(--ns-space-3);
+  font-size: var(--ns-font-size-sm);
+  color: var(--ns-color-fg-subtle);
+  text-align: center;
+}

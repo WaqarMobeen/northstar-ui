@@ -1,0 +1,104 @@
+/**
+ * Dark theme overrides and accent palettes.
+ *
+ * Only color tokens change between themes; structural tokens stay constant.
+ * Accent palettes override the `--ns-color-accent-*` group so a single attribute
+ * (`data-accent`) re-skins every accent-driven component.
+ */
+
+[data-theme='dark'] {
+  --ns-color-bg-canvas: #0c1017;
+  --ns-color-bg-surface: #141a23;
+  --ns-color-bg-raised: #1a212c;
+  --ns-color-bg-subtle: #1d2530;
+  --ns-color-bg-muted: #283140;
+  --ns-color-bg-overlay: rgba(2, 6, 12, 0.6);
+
+  --ns-color-fg-default: #e7ebf1;
+  --ns-color-fg-muted: #9aa6b5;
+  --ns-color-fg-subtle: #6c7888;
+  --ns-color-fg-on-accent: #ffffff;
+
+  --ns-color-border-subtle: #20272f;
+  --ns-color-border-default: #2c3542;
+  --ns-color-border-strong: #3c4757;
+
+  --ns-color-success-solid: #3dd68c;
+  --ns-color-success-fg: #4ade94;
+  --ns-color-success-soft: #112a1f;
+  --ns-color-success-border: #1c4533;
+
+  --ns-color-warning-solid: #f5b15a;
+  --ns-color-warning-fg: #f7bd6e;
+  --ns-color-warning-soft: #2c2010;
+  --ns-color-warning-border: #4a371a;
+
+  --ns-color-danger-solid: #f4795f;
+  --ns-color-danger-fg: #f78d77;
+  --ns-color-danger-soft: #2d1512;
+  --ns-color-danger-border: #4d251f;
+
+  --ns-color-info-solid: #5aa2f5;
+  --ns-color-info-fg: #74b1f7;
+  --ns-color-info-soft: #10243d;
+  --ns-color-info-border: #1d3c63;
+}
+
+/* Accent palettes (apply with data-accent on ThemeProvider). */
+[data-accent='blue'] {
+  --ns-color-accent-solid: #2563eb;
+  --ns-color-accent-solid-hover: #1d4fd7;
+  --ns-color-accent-solid-active: #1a45bb;
+  --ns-color-accent-soft: #e7eefe;
+  --ns-color-accent-soft-hover: #d7e3fd;
+  --ns-color-accent-fg: #1d4fd7;
+  --ns-color-accent-border: #b9cdfb;
+  --ns-color-accent-ring: rgba(37, 99, 235, 0.45);
+  --ns-color-focus-ring: var(--ns-color-accent-ring);
+}
+
+[data-accent='violet'] {
+  --ns-color-accent-solid: #7c3aed;
+  --ns-color-accent-solid-hover: #6d28d9;
+  --ns-color-accent-solid-active: #5b21b6;
+  --ns-color-accent-soft: #f1eafe;
+  --ns-color-accent-soft-hover: #e6d8fd;
+  --ns-color-accent-fg: #6d28d9;
+  --ns-color-accent-border: #d6c2fb;
+  --ns-color-accent-ring: rgba(124, 58, 237, 0.45);
+  --ns-color-focus-ring: var(--ns-color-accent-ring);
+}
+
+[data-accent='emerald'] {
+  --ns-color-accent-solid: #059669;
+  --ns-color-accent-solid-hover: #047d58;
+  --ns-color-accent-solid-active: #036749;
+  --ns-color-accent-soft: #e2f6ee;
+  --ns-color-accent-soft-hover: #cdeede;
+  --ns-color-accent-fg: #047d58;
+  --ns-color-accent-border: #aee4ce;
+  --ns-color-accent-ring: rgba(5, 150, 105, 0.4);
+  --ns-color-focus-ring: var(--ns-color-accent-ring);
+}
+
+/* Dark mode nudges accent soft fills so they read on dark surfaces. */
+[data-theme='dark'][data-accent='blue'] {
+  --ns-color-accent-soft: #142544;
+  --ns-color-accent-soft-hover: #18305a;
+  --ns-color-accent-fg: #8db4f8;
+  --ns-color-accent-border: #234479;
+}
+
+[data-theme='dark'][data-accent='violet'] {
+  --ns-color-accent-soft: #241540;
+  --ns-color-accent-soft-hover: #2e1a53;
+  --ns-color-accent-fg: #b794f6;
+  --ns-color-accent-border: #432a78;
+}
+
+[data-theme='dark'][data-accent='emerald'] {
+  --ns-color-accent-soft: #0e2a20;
+  --ns-color-accent-soft-hover: #123829;
+  --ns-color-accent-fg: #6ee0b0;
+  --ns-color-accent-border: #1f5340;
+}

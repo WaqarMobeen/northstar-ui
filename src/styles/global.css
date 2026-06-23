@@ -1,0 +1,41 @@
+/**
+ * Optional base layer. Consumers import `northstar-ui/styles.css` (the bundled
+ * output of this file) once at the app root. It pulls in token definitions and a
+ * light, opinionated reset scoped to keep components predictable without
+ * fighting the host application's own resets.
+ */
+
+@import './tokens.css';
+@import './themes.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+[data-ns-root] {
+  font-family: var(--ns-font-sans);
+  font-size: var(--ns-font-size-md);
+  line-height: var(--ns-line-height-normal);
+  color: var(--ns-color-fg-default);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Components opt into a consistent, accent-driven focus ring. */
+:where([data-ns-focus-ring]):focus-visible {
+  outline: var(--ns-focus-ring-width) solid var(--ns-color-focus-ring);
+  outline-offset: var(--ns-focus-ring-offset);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

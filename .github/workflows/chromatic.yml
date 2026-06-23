@@ -1,0 +1,49 @@
+name: Chromatic
+
+# Visual regression via Chromatic. This job is a no-op unless the repository
+# defines a CHROMATIC_PROJECT_TOKEN secret, so forks and local clones never fail
+# for a missing secret.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  chromatic:
+    name: Visual regression
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Guard on token
+        id: guard
+        run: |
+          if [ -n "${{ secrets.CHROMATIC_PROJECT_TOKEN }}" ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "CHROMATIC_PROJECT_TOKEN not set; skipping Chromatic." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Setup Node
+        if: steps.guard.outputs.enabled == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        if: steps.guard.outputs.enabled == 'true'
+        run: npm ci
+
+      - name: Run Chromatic
+        if: steps.guard.outputs.enabled == 'true'
+        uses: chromaui/action@latest
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          exitZeroOnChanges: true
+          onlyChanged: true

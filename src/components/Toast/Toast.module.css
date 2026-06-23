@@ -1,0 +1,118 @@
+.region {
+  position: fixed;
+  z-index: var(--ns-z-toast);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-3);
+  padding: var(--ns-space-4);
+  width: min(24rem, calc(100vw - var(--ns-space-8)));
+  pointer-events: none;
+}
+
+.region[data-placement^='top'] {
+  top: 0;
+}
+.region[data-placement^='bottom'] {
+  bottom: 0;
+  flex-direction: column-reverse;
+}
+.region[data-placement$='end'] {
+  right: 0;
+}
+.region[data-placement$='start'] {
+  left: 0;
+}
+.region[data-placement='top'],
+.region[data-placement='bottom'] {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.toast {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ns-space-3);
+  padding: var(--ns-space-3) var(--ns-space-3) var(--ns-space-3) var(--ns-space-4);
+  background: var(--ns-color-bg-raised);
+  border: 1px solid var(--ns-color-border-default);
+  border-radius: var(--ns-radius-md);
+  box-shadow: var(--ns-shadow-lg);
+  overflow: hidden;
+  pointer-events: auto;
+  animation: ns-toast-in var(--ns-duration-normal) var(--ns-ease-emphasized);
+}
+
+.accent {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--ns-color-info-solid);
+}
+.toast[data-status='success'] .accent {
+  background: var(--ns-color-success-solid);
+}
+.toast[data-status='warning'] .accent {
+  background: var(--ns-color-warning-solid);
+}
+.toast[data-status='danger'] .accent {
+  background: var(--ns-color-danger-solid);
+}
+
+.body {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  margin: 0;
+  font-size: var(--ns-font-size-sm);
+  font-weight: var(--ns-font-weight-semibold);
+  color: var(--ns-color-fg-default);
+}
+
+.description {
+  margin: var(--ns-space-1) 0 0;
+  font-size: var(--ns-font-size-sm);
+  color: var(--ns-color-fg-muted);
+}
+
+.action {
+  margin-top: var(--ns-space-2);
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: var(--ns-font-size-sm);
+  font-weight: var(--ns-font-weight-medium);
+  color: var(--ns-color-accent-fg);
+  cursor: pointer;
+}
+
+.action:hover {
+  text-decoration: underline;
+}
+
+.close {
+  margin: -0.25rem -0.25rem 0 0;
+  flex-shrink: 0;
+}
+
+@keyframes ns-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toast {
+    animation: none;
+  }
+}

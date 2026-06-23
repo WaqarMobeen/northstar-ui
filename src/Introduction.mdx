@@ -1,0 +1,71 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Introduction" />
+
+# Northstar UI
+
+Northstar UI is the component library behind our SaaS dashboards and internal tools. It exists so
+product teams can ship consistent, accessible interfaces without re-litigating spacing, color, focus
+behavior, or keyboard interactions on every screen.
+
+This is engineering documentation, not a marketing page. If something here is wrong or unclear, open
+an issue or a PR.
+
+## Design principles
+
+- **Accessibility is the baseline, not a feature.** Every interactive component ships with correct
+  roles, names, states, keyboard support, and focus management. We prefer native elements and only
+  reach for ARIA where the platform falls short.
+- **Composition over configuration.** Components expose small, predictable APIs. When a pattern needs
+  flexibility we split it into subcomponents (`Card.*`, `Tabs.*`, `Table.*`) rather than growing a
+  prop list.
+- **Tokens, not magic numbers.** Color, spacing, radius, type, motion, and elevation all come from
+  design tokens. There are no hardcoded hex values or pixel paddings inside components.
+- **Predictable state.** Stateful components follow one controlled/uncontrolled contract via
+  `useControllableState`, so `value`/`defaultValue`/`onChange` behave the same everywhere.
+
+## Token system
+
+Tokens are CSS custom properties defined in `src/styles/tokens.css` (structural + light theme) and
+`src/styles/themes.css` (dark theme and accent palettes). Structural tokens — spacing, radius, type,
+motion, z-index — never change between themes. Only color tokens are theme-dependent.
+
+Reference a token in CSS with `var(--ns-space-4)`, or in TypeScript via the typed `tokens` object and
+the `cssVar()` helper. See **Foundations → Design tokens** for the full catalog.
+
+## Theming
+
+Wrap your app once and switch themes with two attributes:
+
+```tsx
+import { ThemeProvider } from 'northstar-ui';
+import 'northstar-ui/styles.css';
+
+<ThemeProvider theme="dark" accent="violet">
+  <App />
+</ThemeProvider>;
+```
+
+`ThemeProvider` writes `data-theme` and `data-accent`, which the token CSS keys off. It works
+controlled (pass `theme`/`accent`) or uncontrolled (use the `useTheme()` setters). Overlays portal
+into nodes that carry these attributes, so dialogs and toasts stay themed regardless of where they
+render in the DOM.
+
+## Accessibility approach
+
+We test keyboard paths and ARIA wiring as first-class behavior, run the Storybook a11y addon
+(axe-core) on stories, and follow the WAI-ARIA Authoring Practices for composite widgets (tabs, menu,
+combobox, dialog). Reduced-motion is respected globally. See **docs/accessibility.md**.
+
+## Testing approach
+
+Unit and interaction tests use Vitest + React Testing Library, asserting behavior and accessibility
+rather than implementation details. Visual regressions are caught by Chromatic against Storybook. See
+**docs/testing.md**.
+
+## Contributing
+
+1. Create a branch and implement your change with tests and a story.
+2. Run `npm run typecheck && npm run lint && npm run test`.
+3. Add a changeset: `npm run changeset`.
+4. Open a PR — CI runs typecheck, lint, tests, build, and Storybook build; Chromatic posts a visual diff.

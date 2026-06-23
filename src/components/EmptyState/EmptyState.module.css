@@ -1,0 +1,37 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--ns-space-2);
+  padding: var(--ns-space-10) var(--ns-space-6);
+}
+
+.icon {
+  display: inline-flex;
+  margin-bottom: var(--ns-space-2);
+  color: var(--ns-color-fg-subtle);
+}
+
+.icon :global(svg) {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.title {
+  margin: 0;
+  font-size: var(--ns-font-size-md);
+  font-weight: var(--ns-font-weight-semibold);
+  color: var(--ns-color-fg-default);
+}
+
+.description {
+  margin: 0;
+  max-width: 28rem;
+  font-size: var(--ns-font-size-sm);
+  color: var(--ns-color-fg-muted);
+}
+
+.action {
+  margin-top: var(--ns-space-4);
+}

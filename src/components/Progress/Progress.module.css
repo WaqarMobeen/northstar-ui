@@ -1,0 +1,52 @@
+.track {
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--ns-radius-full);
+  background: var(--ns-color-bg-muted);
+  --ns-progress-color: var(--ns-color-accent-solid);
+}
+
+.track[data-size='sm'] {
+  height: 0.375rem;
+}
+.track[data-size='md'] {
+  height: 0.5rem;
+}
+
+.track[data-tone='success'] {
+  --ns-progress-color: var(--ns-color-success-solid);
+}
+.track[data-tone='warning'] {
+  --ns-progress-color: var(--ns-color-warning-solid);
+}
+.track[data-tone='danger'] {
+  --ns-progress-color: var(--ns-color-danger-solid);
+}
+
+.indicator {
+  height: 100%;
+  width: var(--ns-progress-pct, 0%);
+  background: var(--ns-progress-color);
+  border-radius: inherit;
+  transition: width var(--ns-duration-normal) var(--ns-ease-standard);
+}
+
+.track[data-indeterminate] .indicator {
+  width: 40%;
+  animation: ns-progress-slide 1.2s var(--ns-ease-standard) infinite;
+}
+
+@keyframes ns-progress-slide {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(250%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track[data-indeterminate] .indicator {
+    animation-duration: 2.4s;
+  }
+}

@@ -1,0 +1,111 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ns-space-2);
+  font-family: var(--ns-font-sans);
+  font-weight: var(--ns-font-weight-medium);
+  white-space: nowrap;
+  border: 1px solid transparent;
+  border-radius: var(--ns-radius-md);
+  cursor: pointer;
+  user-select: none;
+  transition:
+    background-color var(--ns-duration-fast) var(--ns-ease-standard),
+    border-color var(--ns-duration-fast) var(--ns-ease-standard),
+    color var(--ns-duration-fast) var(--ns-ease-standard);
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.button[data-loading] {
+  cursor: progress;
+  opacity: 1;
+}
+
+.button[data-full-width] {
+  width: 100%;
+}
+
+/* Sizes */
+.button[data-size='sm'] {
+  height: var(--ns-control-height-sm);
+  padding-inline: var(--ns-space-3);
+  font-size: var(--ns-font-size-sm);
+}
+.button[data-size='md'] {
+  height: var(--ns-control-height-md);
+  padding-inline: var(--ns-space-4);
+  font-size: var(--ns-font-size-sm);
+}
+.button[data-size='lg'] {
+  height: var(--ns-control-height-lg);
+  padding-inline: var(--ns-space-5);
+  font-size: var(--ns-font-size-md);
+}
+
+/* Variants */
+.button[data-variant='primary'] {
+  background: var(--ns-color-accent-solid);
+  color: var(--ns-color-fg-on-accent);
+}
+.button[data-variant='primary']:not(:disabled):hover {
+  background: var(--ns-color-accent-solid-hover);
+}
+.button[data-variant='primary']:not(:disabled):active {
+  background: var(--ns-color-accent-solid-active);
+}
+
+.button[data-variant='secondary'] {
+  background: var(--ns-color-bg-surface);
+  color: var(--ns-color-fg-default);
+  border-color: var(--ns-color-border-default);
+}
+.button[data-variant='secondary']:not(:disabled):hover {
+  background: var(--ns-color-bg-subtle);
+  border-color: var(--ns-color-border-strong);
+}
+
+.button[data-variant='tertiary'] {
+  background: var(--ns-color-accent-soft);
+  color: var(--ns-color-accent-fg);
+}
+.button[data-variant='tertiary']:not(:disabled):hover {
+  background: var(--ns-color-accent-soft-hover);
+}
+
+.button[data-variant='danger'] {
+  background: var(--ns-color-danger-solid);
+  color: #fff;
+}
+.button[data-variant='danger']:not(:disabled):hover {
+  filter: brightness(0.94);
+}
+
+.button[data-variant='ghost'] {
+  background: transparent;
+  color: var(--ns-color-fg-muted);
+}
+.button[data-variant='ghost']:not(:disabled):hover {
+  background: var(--ns-color-bg-subtle);
+  color: var(--ns-color-fg-default);
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.icon :global(svg) {
+  width: 1.1em;
+  height: 1.1em;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+}

@@ -1,0 +1,45 @@
+.skeleton {
+  display: block;
+  background: linear-gradient(
+    90deg,
+    var(--ns-color-bg-muted) 25%,
+    var(--ns-color-bg-subtle) 37%,
+    var(--ns-color-bg-muted) 63%
+  );
+  background-size: 400% 100%;
+  animation: ns-skeleton-shimmer 1.4s ease infinite;
+  border-radius: var(--ns-radius-sm);
+}
+
+.skeleton[data-variant='text'] {
+  height: 0.75em;
+  margin-block: 0.2em;
+  border-radius: var(--ns-radius-sm);
+}
+
+.skeleton[data-variant='rect'] {
+  border-radius: var(--ns-radius-md);
+}
+
+.skeleton[data-variant='circle'] {
+  border-radius: var(--ns-radius-full);
+}
+
+.group {
+  display: block;
+}
+
+@keyframes ns-skeleton-shimmer {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+  }
+}

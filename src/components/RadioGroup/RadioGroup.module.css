@@ -1,0 +1,81 @@
+.group {
+  display: flex;
+  gap: var(--ns-space-3);
+}
+
+.group[data-orientation='vertical'] {
+  flex-direction: column;
+}
+.group[data-orientation='horizontal'] {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.radio {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ns-space-2);
+  cursor: pointer;
+  font-size: var(--ns-font-size-sm);
+  color: var(--ns-color-fg-default);
+}
+
+.radio[data-disabled] {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.control {
+  position: relative;
+  display: inline-flex;
+  width: 1.125rem;
+  height: 1.125rem;
+  flex-shrink: 0;
+}
+
+.input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: inherit;
+}
+
+.dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border: 1.5px solid var(--ns-color-border-strong);
+  border-radius: var(--ns-radius-full);
+  background: var(--ns-color-bg-surface);
+  transition: border-color var(--ns-duration-fast) var(--ns-ease-standard);
+}
+
+.dot::after {
+  content: '';
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--ns-radius-full);
+  background: var(--ns-color-accent-solid);
+  transform: scale(0);
+  transition: transform var(--ns-duration-fast) var(--ns-ease-emphasized);
+}
+
+.input:checked ~ .dot {
+  border-color: var(--ns-color-accent-solid);
+}
+
+.input:checked ~ .dot::after {
+  transform: scale(1);
+}
+
+.input:focus-visible ~ .dot {
+  outline: var(--ns-focus-ring-width) solid var(--ns-color-focus-ring);
+  outline-offset: var(--ns-focus-ring-offset);
+}
+
+.label {
+  user-select: none;
+}

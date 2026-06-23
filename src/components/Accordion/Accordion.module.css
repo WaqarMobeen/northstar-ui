@@ -1,0 +1,63 @@
+.accordion {
+  border: 1px solid var(--ns-color-border-subtle);
+  border-radius: var(--ns-radius-md);
+  overflow: hidden;
+}
+
+.item + .item {
+  border-top: 1px solid var(--ns-color-border-subtle);
+}
+
+.heading {
+  margin: 0;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ns-space-3);
+  width: 100%;
+  padding: var(--ns-space-4) var(--ns-space-4);
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-size: var(--ns-font-size-sm);
+  font-weight: var(--ns-font-weight-medium);
+  color: var(--ns-color-fg-default);
+  text-align: left;
+  cursor: pointer;
+}
+
+.trigger:hover {
+  background: var(--ns-color-bg-subtle);
+}
+
+.trigger:focus-visible {
+  outline: var(--ns-focus-ring-width) solid var(--ns-color-focus-ring);
+  outline-offset: -2px;
+}
+
+.chevron {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  color: var(--ns-color-fg-subtle);
+  transition: transform var(--ns-duration-fast) var(--ns-ease-standard);
+}
+
+.trigger[data-open] .chevron {
+  transform: rotate(180deg);
+}
+
+.panelInner {
+  padding: 0 var(--ns-space-4) var(--ns-space-4);
+  font-size: var(--ns-font-size-sm);
+  color: var(--ns-color-fg-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chevron {
+    transition: none;
+  }
+}

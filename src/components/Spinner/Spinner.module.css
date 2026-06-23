@@ -1,0 +1,37 @@
+.spinner {
+  display: inline-flex;
+  --ns-spinner-size: 1.25rem;
+}
+
+.spinner[data-size='sm'] {
+  --ns-spinner-size: 1rem;
+}
+.spinner[data-size='md'] {
+  --ns-spinner-size: 1.25rem;
+}
+.spinner[data-size='lg'] {
+  --ns-spinner-size: 1.75rem;
+}
+
+.ring {
+  display: block;
+  width: var(--ns-spinner-size);
+  height: var(--ns-spinner-size);
+  border-radius: var(--ns-radius-full);
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  opacity: 0.85;
+  animation: ns-spin var(--ns-duration-slow) linear infinite;
+}
+
+@keyframes ns-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ring {
+    animation-duration: 1.2s;
+  }
+}

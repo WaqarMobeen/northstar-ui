@@ -1,0 +1,145 @@
+/**
+ * Structural tokens + light-theme semantic colors.
+ *
+ * Structural tokens (spacing, radius, type, motion, z-index) are theme-agnostic
+ * and live on :root. Semantic color tokens default to the light theme here and
+ * are overridden by `[data-theme='dark']` in themes.css. Accent colors default
+ * to the blue palette and are overridden by `[data-accent='...']`.
+ */
+
+:root {
+  /* Spacing scale (4px base) */
+  --ns-space-0: 0;
+  --ns-space-1: 0.25rem;
+  --ns-space-2: 0.5rem;
+  --ns-space-3: 0.75rem;
+  --ns-space-4: 1rem;
+  --ns-space-5: 1.25rem;
+  --ns-space-6: 1.5rem;
+  --ns-space-8: 2rem;
+  --ns-space-10: 2.5rem;
+  --ns-space-12: 3rem;
+  --ns-space-16: 4rem;
+  --ns-space-20: 5rem;
+  --ns-space-24: 6rem;
+
+  /* Radius */
+  --ns-radius-none: 0;
+  --ns-radius-sm: 0.25rem;
+  --ns-radius-md: 0.5rem;
+  --ns-radius-lg: 0.75rem;
+  --ns-radius-xl: 1rem;
+  --ns-radius-full: 9999px;
+
+  /* Typography */
+  --ns-font-sans: 'Inter var', Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Helvetica, Arial, sans-serif;
+  --ns-font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas,
+    monospace;
+
+  --ns-font-size-xs: 0.75rem;
+  --ns-font-size-sm: 0.875rem;
+  --ns-font-size-md: 1rem;
+  --ns-font-size-lg: 1.125rem;
+  --ns-font-size-xl: 1.25rem;
+  --ns-font-size-2xl: 1.5rem;
+  --ns-font-size-3xl: 1.875rem;
+  --ns-font-size-4xl: 2.25rem;
+
+  --ns-font-weight-regular: 400;
+  --ns-font-weight-medium: 500;
+  --ns-font-weight-semibold: 600;
+  --ns-font-weight-bold: 700;
+
+  --ns-line-height-tight: 1.2;
+  --ns-line-height-snug: 1.35;
+  --ns-line-height-normal: 1.5;
+  --ns-line-height-relaxed: 1.65;
+
+  /* Shadows */
+  --ns-shadow-xs: 0 1px 2px 0 rgba(15, 23, 42, 0.06);
+  --ns-shadow-sm: 0 1px 3px 0 rgba(15, 23, 42, 0.1), 0 1px 2px -1px rgba(15, 23, 42, 0.1);
+  --ns-shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.12), 0 2px 4px -2px rgba(15, 23, 42, 0.08);
+  --ns-shadow-lg: 0 12px 28px -8px rgba(15, 23, 42, 0.18), 0 4px 8px -4px rgba(15, 23, 42, 0.1);
+
+  /* Z-index */
+  --ns-z-hide: -1;
+  --ns-z-base: 0;
+  --ns-z-raised: 10;
+  --ns-z-sticky: 100;
+  --ns-z-overlay: 1000;
+  --ns-z-modal: 1100;
+  --ns-z-popover: 1200;
+  --ns-z-toast: 1300;
+  --ns-z-tooltip: 1400;
+
+  /* Motion */
+  --ns-duration-instant: 80ms;
+  --ns-duration-fast: 140ms;
+  --ns-duration-normal: 200ms;
+  --ns-duration-slow: 320ms;
+  --ns-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ns-ease-emphasized: cubic-bezier(0.3, 0, 0, 1);
+  --ns-ease-exit: cubic-bezier(0.4, 0, 1, 1);
+
+  /* Control sizing */
+  --ns-control-height-sm: 2rem;
+  --ns-control-height-md: 2.5rem;
+  --ns-control-height-lg: 3rem;
+  --ns-focus-ring-width: 2px;
+  --ns-focus-ring-offset: 2px;
+}
+
+/* Light theme semantic colors (default). */
+:root,
+[data-theme='light'] {
+  --ns-color-bg-canvas: #f7f8fa;
+  --ns-color-bg-surface: #ffffff;
+  --ns-color-bg-raised: #ffffff;
+  --ns-color-bg-subtle: #f1f3f6;
+  --ns-color-bg-muted: #e7eaef;
+  --ns-color-bg-overlay: rgba(15, 23, 42, 0.45);
+
+  --ns-color-fg-default: #1c2530;
+  --ns-color-fg-muted: #56616f;
+  --ns-color-fg-subtle: #828d9b;
+  --ns-color-fg-on-accent: #ffffff;
+
+  --ns-color-border-subtle: #eceef2;
+  --ns-color-border-default: #d9dde4;
+  --ns-color-border-strong: #b9c0cb;
+
+  --ns-color-success-solid: #18794e;
+  --ns-color-success-fg: #146c46;
+  --ns-color-success-soft: #e4f5ec;
+  --ns-color-success-border: #b6e2c9;
+
+  --ns-color-warning-solid: #a35200;
+  --ns-color-warning-fg: #8a4500;
+  --ns-color-warning-soft: #fdf0db;
+  --ns-color-warning-border: #f4d6a6;
+
+  --ns-color-danger-solid: #c2371d;
+  --ns-color-danger-fg: #b22f17;
+  --ns-color-danger-soft: #fdeae6;
+  --ns-color-danger-border: #f4c2b7;
+
+  --ns-color-info-solid: #1f6fd6;
+  --ns-color-info-fg: #1a63c0;
+  --ns-color-info-soft: #e6f0fd;
+  --ns-color-info-border: #bcd8f7;
+}
+
+/* Default accent: blue. */
+:root,
+[data-accent='blue'] {
+  --ns-color-accent-solid: #2563eb;
+  --ns-color-accent-solid-hover: #1d4fd7;
+  --ns-color-accent-solid-active: #1a45bb;
+  --ns-color-accent-soft: #e7eefe;
+  --ns-color-accent-soft-hover: #d7e3fd;
+  --ns-color-accent-fg: #1d4fd7;
+  --ns-color-accent-border: #b9cdfb;
+  --ns-color-accent-ring: rgba(37, 99, 235, 0.45);
+  --ns-color-focus-ring: var(--ns-color-accent-ring);
+}
